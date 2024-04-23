@@ -1,3 +1,4 @@
+
 window.onload = function() {
     const maxPokemon = 1025;
 
@@ -27,6 +28,7 @@ window.onload = function() {
     // fetch from Pokemon API and display the result
     function getPokemon(){
         var pokemonName = document.querySelector("#pokemonName").value.toLowerCase();
+
 
         fetch (`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
             .then((response) => {
