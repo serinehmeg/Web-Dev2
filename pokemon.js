@@ -20,5 +20,5 @@ function fetchPokemon() {
         console.log(pokemon);
     });
 }}
-fetchPokemon();
+//fetchPokemon();
 
