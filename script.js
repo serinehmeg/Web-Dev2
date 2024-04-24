@@ -28,9 +28,11 @@ window.onload = function() {
     // fetch from Pokemon API and display the result
     function getPokemon(){
         var pokemonName = document.querySelector("#pokemonName").value.toLowerCase();
+        var fixedName = pokemonName.replace(/[.]/g, '');
+        fixedName = fixedName.replace(/[' ']/g, '-');
 
 
-        fetch (`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        fetch (`https://pokeapi.co/api/v2/pokemon/${fixedName}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Pokemon not found');
@@ -40,7 +42,7 @@ window.onload = function() {
             .then((data) => {
                 document.querySelector(".pokemonBox").innerHTML = `
                 <div>
-                    <h1>${capitalizeFirstLetter(data.name)}</h1>
+                    <h1>${capitalizeFirstLetter(pokemonName)}</h1>
                     <img src="${data.sprites.other["official-artwork"].front_default}" alt="${data.name}">
                 </div>
                 <div class="pokemonInfo">
