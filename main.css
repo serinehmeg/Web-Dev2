@@ -30,22 +30,23 @@ width: 60px;
 
 }
 
-#searchbar{
+#searchBox{
     margin: auto;
     align-items: center;
     position: relative;
-}
-#entrybox{
-    position: relative;
-    margin:auto;
-    justify-content: center;
-    width: 40%;
+    display: flex;
+
 }
 
-#entrybox input{
-    position: absolute;
+.search{
+    margin-left: -30%;
+}
+
+#pokemonName{
+    justify-content: center;
+    margin: auto;
     outline: none;
-    width: 99%;
+    width: 30%;
     font-size: 30px;
     border-radius: 12px;
     z-index: 1111;
@@ -53,14 +54,14 @@ width: 60px;
     border: solid 2px white;
     transition: 0.1s ease;
 }
-#entrybox input:focus,
-#entrybox input:hover{
+#pokemonName:focus,
+#pokemonName:hover{
     border: solid 3px black;
     color: black;
 }
-#entrybox input:focus + .labelLine,
-#entrybox input:hover + .labelLine{
-    transform: translate(-15px,-3px) scale(0.88);
+#pokemonName:focus + .labelLine,
+#pokemonName:hover + .labelLine{
+    transform: translate(-90%,-17px) scale(0.88);
     z-index: 1111;
     background-color: #5a5553;
     font-size: 12px;
@@ -69,6 +70,7 @@ width: 60px;
 
 .labelLine{
     position: absolute;
+    right: 47%;
     padding: 0 25px;
     margin: 0 25px; 
     font-size: 30px;
