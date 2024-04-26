@@ -104,7 +104,7 @@ window.onload = function() {
                 `;
                 appendTypes(data.types);
                 styleCard(themeColor);
-
+                document.querySelector("#exitBox").style.display = "block"; //adds the exit button to remove pokemon card
                 // Call getPokemonDescription to get the description
                 getPokemonDescription(data.id);
             })
@@ -118,6 +118,14 @@ window.onload = function() {
                     `;
                 }
             });
+    }
+
+    //removes the pokemon card
+    document.querySelector("#exitBox").onclick = function(){
+        document.querySelector("#pokemonName").value = "";
+        document.querySelector(".pokemonBox").innerHTML = "";
+        document.querySelector("#exitBox").style.display = "none";
+
     }
 
     // Display types of the pokemon
