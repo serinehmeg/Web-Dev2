@@ -103,7 +103,7 @@ window.onload = function() {
                     </div>
                 `;
                 appendTypes(data.types);
-                styleCard(themeColor);
+                styleCard(data.types);
                 document.querySelector("#exitBox").style.display = "block"; //adds the exit button to remove pokemon card
                 // Call getPokemonDescription to get the description
                 getPokemonDescription(data.id);
@@ -138,10 +138,15 @@ window.onload = function() {
     };
     
     // Set background of the card
-    let styleCard = (color) => {
-        card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
-        card.querySelectorAll(".types span").forEach((typeColor) => {
-        typeColor.style.backgroundColor = color;
+    let styleCard = (types) => {
+        // color of the circle
+        card.style.background = `radial-gradient(circle at 50% 0%, ${typeColor[types[0].type.name]} 36%, #ffffff 36%)`;
+        
+        // color of the types
+        const typeSpans = card.querySelectorAll(".types span");
+        typeSpans.forEach((typeSpan, index) => {
+            const type = types[index].type.name;
+            typeSpan.style.backgroundColor = typeColor[type];
         });
     };
 
