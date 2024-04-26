@@ -1,5 +1,5 @@
 body{ 
-    background-color: #5a5553;
+    background-color: #dbd6d4;
 }
 
 .pokemonLogo {
@@ -35,47 +35,47 @@ width: 60px;
     align-items: center;
     position: relative;
     display: flex;
+    justify-content: center;
 
 }
 
-.search{
-    margin-left: -30%;
+#search{
+    padding: .5%;
+    height: 100%;
+    border-radius: 30px;
 }
 
 #pokemonName{
-    justify-content: center;
-    margin: auto;
     outline: none;
     width: 30%;
     font-size: 30px;
     border-radius: 12px;
     z-index: 1111;
     background: transparent;
-    border: solid 2px white;
+    border: solid 2px black;
     transition: 0.1s ease;
 }
 #pokemonName:focus,
 #pokemonName:hover{
-    border: solid 3px black;
+    border: solid 3px red;
     color: black;
 }
+
+/*'Animates' search pokemon text to move on top of search bar when focused*/
 #pokemonName:focus + .labelLine,
 #pokemonName:hover + .labelLine{
     transform: translate(-90%,-17px) scale(0.88);
     z-index: 1111;
-    background-color: #5a5553;
+    background-color: #dbd6d4;
     font-size: 12px;
     border-radius: 8px;
 }
 
-.labelLine{
+.labelLine{ /*Text saying "Search Pokemon*/
     position: absolute;
-    right: 47%;
     padding: 0 25px;
-    margin: 0 25px; 
     font-size: 30px;
     transition: 0.2s ease;
-
 }
 
 footer{
@@ -92,6 +92,7 @@ position: absolute;
 transform: translate(-50%, -50%);
 top: 50%;
 left: 50%;
+z-index: 9999;
 }
 #card {
 position: relative;
