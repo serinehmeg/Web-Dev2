@@ -85,6 +85,21 @@ footer{
     width: 100%;
 }
 
+#pokemonGrid{ /* set the grid layout for the main menu pokiemon*/
+    border: 1px solid green;
+    margin: 2% auto;
+    width: 97%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+}
+
+#pokemonGrid div{
+    border: solid 1px black;
+}
+
 /* ------------Pokemon Card------------ */
 .pokemonBox {
 width: 350px;
