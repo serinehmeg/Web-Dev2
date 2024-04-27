@@ -100,6 +100,10 @@ footer{
     border: solid 1px black;
 }
 
+#pokemonGrid div:hover{
+    cursor: pointer;
+}
+
 /* ------------Pokemon Card------------ */
 .pokemonBox {
 width: 350px;
