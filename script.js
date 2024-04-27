@@ -103,7 +103,7 @@ window.onload = function() {
                     </div>
                 `;
                 appendTypes(data.types);
-                styleCard(data.types);
+                styleCard(themeColor);
                 document.querySelector("#exitBox").style.display = "block"; //adds the exit button to remove pokemon card
                 // Call getPokemonDescription to get the description
                 getPokemonDescription(data.id);
@@ -136,17 +136,42 @@ window.onload = function() {
         document.querySelector(".types").appendChild(span);
         });
     };
+
+//----------Fills in grid with pokemon images-------------------------------------
+function fillPokemonGrid() {
+    for (let i = 1; i <= 24; i++) {
+        const pokemonInfo = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        const pokemonGridBox = document.createElement("div");
+        document.querySelector("#pokemonGrid").appendChild(pokemonGridBox);
+        fetch(pokemonInfo)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                const pokemonGridName = data.name;
+                const pokemonGridImage = data.sprites['front_default']; // Corrected assignment
+                const pokemonImage = document.createElement("img"); // Create img element
+                pokemonImage.src = pokemonGridImage; // Set src attribute to the retrieved image URL
+                pokemonGridBox.appendChild(pokemonImage); // Append the image to the grid box
+                pokemonGridBox.innerHTML += pokemonGridName; // Append the name to the grid box
+            })
+            .catch(function(error) {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+}
+
+    
+    fillPokemonGrid();
     
     // Set background of the card
-    let styleCard = (types) => {
-        // color of the circle
-        card.style.background = `radial-gradient(circle at 50% 0%, ${typeColor[types[0].type.name]} 36%, #ffffff 36%)`;
-        
-        // color of the types
-        const typeSpans = card.querySelectorAll(".types span");
-        typeSpans.forEach((typeSpan, index) => {
-            const type = types[index].type.name;
-            typeSpan.style.backgroundColor = typeColor[type];
+    let styleCard = (color) => {
+        card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
+        card.querySelectorAll(".types span").forEach((typeColor) => {
+        typeColor.style.backgroundColor = color;
         });
     };
 
