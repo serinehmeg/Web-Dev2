@@ -120,7 +120,7 @@ window.onload = function() {
             });
     }
 
-    //removes the pokemon card
+    //----------------------------removes the pokemon card
     document.querySelector("#exitBox").onclick = function(){
         document.querySelector("#pokemonName").value = "";
         document.querySelector(".pokemonBox").innerHTML = "";
@@ -137,32 +137,16 @@ window.onload = function() {
         });
     };
 
-//----------Fills in grid with pokemon images-------------------------------------
-function fillPokemonGrid() {
-    for (let i = 1; i <= 24; i++) {
-        const pokemonInfo = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        const pokemonGridBox = document.createElement("div");
-        document.querySelector("#pokemonGrid").appendChild(pokemonGridBox);
-        fetch(pokemonInfo)
-            .then(function(response) {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(function(data) {
-                const pokemonGridName = data.name;
-                const pokemonGridImage = data.sprites['front_default']; // Corrected assignment
-                const pokemonImage = document.createElement("img"); // Create img element
-                pokemonImage.src = pokemonGridImage; // Set src attribute to the retrieved image URL
-                pokemonGridBox.appendChild(pokemonImage); // Append the image to the grid box
-                pokemonGridBox.innerHTML += pokemonGridName; // Append the name to the grid box
-            })
-            .catch(function(error) {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    }
+
+
+// Define your function to handle the click event
+function handleClick(name, image) {
+    // Example function, you can replace this with your own logic
+    console.log('You clicked on:', name);
+    console.log('Image URL:', image);
+    // Add your custom logic here
 }
+
 
     
     fillPokemonGrid();
