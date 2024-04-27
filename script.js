@@ -137,18 +137,38 @@ window.onload = function() {
         });
     };
 
-
-
-// Define your function to handle the click event
-function handleClick(name, image) {
-    // Example function, you can replace this with your own logic
-    console.log('You clicked on:', name);
-    console.log('Image URL:', image);
-    // Add your custom logic here
-}
-
-
-    
+//----------Fills in grid with pokemon images-------------------------------------
+function fillPokemonGrid() {
+    for (let i = 1; i <= 24; i++) {
+        const pokemonInfo = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        const pokemonGridBox = document.createElement("div");
+        document.querySelector("#pokemonGrid").appendChild(pokemonGridBox);
+        fetch(pokemonInfo)
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                const pokemonGridName = data.name;
+                const pokemonGridImage = data.sprites['front_default'];
+                const pokemonImage = document.createElement("img");
+                pokemonImage.src = pokemonGridImage;
+                pokemonGridBox.appendChild(pokemonImage);
+                pokemonGridBox.innerHTML += pokemonGridName;
+                
+                // Add click event listener to each grid box
+                pokemonGridBox.addEventListener('click', function() {
+                    document.querySelector("#pokemonName").value = pokemonGridName;
+                    getPokemon();
+                });
+            })
+            .catch(function(error) {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+}    
     fillPokemonGrid();
     
     // Set background of the card
@@ -193,3 +213,4 @@ function handleClick(name, image) {
     //getPokemon();
     //getPokemonDescription();
 };
+
