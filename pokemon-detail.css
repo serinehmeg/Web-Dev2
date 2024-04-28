@@ -103,3 +103,36 @@ color: #404060;
     display: none; /*remains hidden until pokemon is searched*/
 }
 /* ------------DONE Pokemon Card------------ */
+
+
+/* Previous button to switch pokemon info*/
+#leftButton {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30%;
+    bottom: 58%;
+
+}
+#leftButton img{
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+    
+}
+
+/* Next button to switch pokemon info*/
+#rightButton{
+    display: flex;
+    right: 30%;
+    bottom: 58%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+#rightButton img{
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+}
