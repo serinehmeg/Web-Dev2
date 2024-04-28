@@ -1,19 +1,25 @@
 /* ------------Pokemon Card------------ */
-.pokemonBox {
-    width: 350px;
+
+.container {
     position: absolute;
-    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 700px;
     top: 50%;
     left: 50%;
-    z-index: 9998;
+    transform: translate(-50%, -50%);
+}
+
+.pokemonBox {
+    width: 350px;
+    margin: auto;
 }
 
 #card {
 position: relative;
-width: 100%;
 padding: 30px 20px;
-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
 border-radius: 10px;
+margin: auto;
 }
 
 #card img {
@@ -69,9 +75,24 @@ text-align: center;
 color: #404060;
 }
 
+.pokemonDescription {
+    width: 450px;
+    height: 120px;
+    position: relative;
+    top: 20px;
+    margin: auto;
+
+    background-color: gainsboro;
+    border: 3px solid black;
+    border-radius: 10px;
+
+    font-size: 22px;
+    text-align: center;
+    padding: 0% 5%;
+}
+
 #exitBox{ /*Button used to close card */
-    top: 5%;
-    right: 33.5%;
+    right: 8%;
     z-index: 99999;
     position: absolute;
     font-size: 30px;
