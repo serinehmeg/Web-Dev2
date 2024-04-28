@@ -167,7 +167,7 @@ function getPokemonDescription(id) {
         .then((data) => {
 
             // Get desctiption of the pokemon
-            pokemonDesc = data["flavor_text_entries"][10]["flavor_text"];
+            pokemonDesc = data["flavor_text_entries"][1]["flavor_text"];
             
             
             // Display the pokemon
