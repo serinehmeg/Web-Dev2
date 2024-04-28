@@ -105,9 +105,31 @@ let pokemonDetail = () => {
 
     //----------------------------removes the pokemon card
     document.querySelector("#exitBox").addEventListener("click", function(event){
-        event.preventDefault(); // Prevents the default behavior of the link
+        event.preventDefault();
         window.location.href = "index.html"; // Redirect to index.html
     });
+
+    //----------------Functionality for arrow buttons
+    document.querySelector("#leftButton").addEventListener("click", function(event){
+        event.preventDefault();
+        const previousPokemonID = parseInt(pokemonID) - 1;
+        if (previousPokemonID > 0) {
+            window.location.href = `?id=${previousPokemonID}`; //changes page to previous pokemon based off number
+        } else {
+            document.querySelector("#leftButton").setAttribute("disabled", "true");
+        }
+    });
+
+    document.querySelector("#rightButton").addEventListener("click", function(event){
+        event.preventDefault();
+        const nextPokemonID = parseInt(pokemonID) + 1;
+        if (nextPokemonID <= 1025) {
+            window.location.href = `?id=${nextPokemonID}`; // changes page to next pokemon based off number
+        } else {
+            document.querySelector("#rightButton").setAttribute("disabled", "true");
+        }
+    });
+    
 }
 
 // Display types of the pokemon
@@ -168,8 +190,3 @@ function getPokemonDescription(id) {
 
 
     
-
-
-
-window.addEventListener("load", pokemonDetail);
-
