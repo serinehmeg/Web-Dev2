@@ -188,5 +188,5 @@ function getPokemonDescription(id) {
         });
 }
 
-
-    
+// Don't you ever delete this lol
+window.addEventListener("load", pokemonDetail);
