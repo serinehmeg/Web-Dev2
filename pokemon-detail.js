@@ -19,10 +19,9 @@ const typeColor = {
 };
 
 // Get the pokemon ID from the link
-const pokemonID = new URLSearchParams(window.location.search).get("id");
+var pokemonID = new URLSearchParams(window.location.search).get("id");
 
-let pokemonDetail = () => {
-    
+window.onload = function() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`)
 
         .then((response) => {
@@ -35,6 +34,7 @@ let pokemonDetail = () => {
         .then((data) => {
 
             // Get necessary data and assign it to variables
+            pokemonID = data.id;
             const hp = data.stats[0].base_stat;
             const imgSrc = data.sprites.other["official-artwork"].front_default;
             const pokeName = data.name[0].toUpperCase() + data.name.slice(1);
@@ -43,16 +43,13 @@ let pokemonDetail = () => {
             const statSpeed = data.stats[5].base_stat;
             const statHeight = data.height;
             const statWeight = (data.weight * 0.220462).toFixed(0);
-
-            // Set themeColor based on pokemon type
-            const themeColor = typeColor[data.types[0].type.name];
             
             // Display the pokemon
             document.querySelector(".pokemonBox").innerHTML = `
                 <div id = card>
                     <p class="hp">
                         <span>HP</span>
-                         ${hp}
+                        ${hp}
                     </p>
                     <img src=${imgSrc} />
                     <h2 class="poke-name">${pokeName}</h2>
@@ -129,7 +126,6 @@ let pokemonDetail = () => {
             document.querySelector("#rightButton").setAttribute("disabled", "true");
         }
     });
-    
 }
 
 // Display types of the pokemon
@@ -187,6 +183,3 @@ function getPokemonDescription(id) {
             }
         });
 }
-
-// Don't you ever delete this lol
-window.addEventListener("load", pokemonDetail);
