@@ -85,7 +85,7 @@ let pokemonDetail = () => {
                 </div>
             `;
             appendTypes(data.types);
-            styleCard(themeColor);
+            styleCard(data.types);
             document.querySelector("#exitBox").style.display = "block"; //adds the exit button to remove pokemon card
             // Call getPokemonDescription to get the description
             getPokemonDescription(data.id);
@@ -113,12 +113,51 @@ let appendTypes = (types) => {
 };
 
 // Set background of the card
-let styleCard = (color) => {
-    card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
-    card.querySelectorAll(".types span").forEach((typeColor) => {
-    typeColor.style.backgroundColor = color;
+let styleCard = (types) => {
+    // color of the circle
+    card.style.background = `radial-gradient(circle at 50% 0%, ${typeColor[types[0].type.name]} 36%, #ffffff 36%)`;
+
+    // color of the types
+    const typeSpans = card.querySelectorAll(".types span");
+    typeSpans.forEach((typeSpan, index) => {
+        const type = types[index].type.name;
+        typeSpan.style.backgroundColor = typeColor[type];
     });
 };
+
+function getPokemonDescription(id) {
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Pokemon not found');
+            }
+            return response.json();
+        })
+
+        .then((data) => {
+
+            // Get desctiption of the pokemon
+            pokemonDesc = data["flavor_text_entries"][10]["flavor_text"];
+            
+            
+            // Display the pokemon
+            document.querySelector(".pokemonDescription").innerHTML = `
+                <p>${pokemonDesc}</p>
+            `;
+        })
+
+        .catch(error => {
+            console.log("Error fetching Pokemon data:", error);
+            if (error.message === 'Pokemon not found') {
+                document.querySelector(".pokemonBox").innerHTML = `
+                <div>
+                <h1>Wrong ID or Pokemon Name, Try again</h1>
+                </div>
+                `;
+            }
+        });
+}
 
     //----------------------------removes the pokemon card
     /*document.querySelector("#exitBox").onclick = function(){
