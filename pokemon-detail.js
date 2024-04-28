@@ -101,6 +101,13 @@ let pokemonDetail = () => {
                 `;
             }
         });
+
+
+    //----------------------------removes the pokemon card
+    document.querySelector("#exitBox").addEventListener("click", function(event){
+        event.preventDefault(); // Prevents the default behavior of the link
+        window.location.href = "index.html"; // Redirect to index.html
+    });
 }
 
 // Display types of the pokemon
@@ -159,13 +166,10 @@ function getPokemonDescription(id) {
         });
 }
 
-    //----------------------------removes the pokemon card
-    /*document.querySelector("#exitBox").onclick = function(){
-        document.querySelector("#pokemonName").value = "";
-        document.querySelector(".pokemonBox").innerHTML = "";
-        document.querySelector("#exitBox").style.display = "none";
 
-    }
-    */
+    
+
+
 
 window.addEventListener("load", pokemonDetail);
+
