@@ -1,7 +1,12 @@
 window.onload = function() {
 
     // When click the search icon
-    document.querySelector("#search").addEventListener("click", getPokemon);
+    document.querySelector("#search").addEventListener("click", function(e) {
+        var pokemonName = document.querySelector("#pokemonName").value.toLowerCase();
+        var fixedName = pokemonName.replace(/[.]/g, '');
+        fixedName = fixedName.replace(/[' ']/g, '-');
+        window.location.href = `./pokemon-detail.html?id=${fixedName}`;
+    });
 
     // When hit Enter in search bar
     document.getElementById('pokemonName').addEventListener('keypress', function(e) {
